@@ -1,7 +1,9 @@
 import { useState } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Home from './pages/Home'
+import Movies from './pages/Movies'
 import MovieDetail from './pages/MovieDetail'
+import DefaultLayouts from './layouts/DefaultLayouts'
+
 
 function App() {
 
@@ -9,8 +11,12 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/movie/:id' element={<MovieDetail />} />
+          <Route Component={DefaultLayouts}>
+            <Route path='/' element={<div>Home Page</div>} />
+            <Route path='/movies' element={<Movies />} />
+            <Route path='/movie/:id' element={<MovieDetail />} />
+          </Route>
+          <Route path='*' element={<div>404</div>} />
         </Routes>
       </BrowserRouter>
     </>
