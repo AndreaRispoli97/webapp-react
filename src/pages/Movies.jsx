@@ -5,10 +5,14 @@ import MovieCard from '../components/MovieCard'
 
 function Movies() {
     const [movies, setMovies] = useState([])
-
+    const [resarc, setResarc] = useState("")
 
     function getMovie() {
-        axios.get('http://127.0.0.1:3000/api/movies')
+        axios.get('http://127.0.0.1:3000/api/movies',
+            {
+                params: { resarc }
+            }
+        )
             .then(res => {
                 console.log(res.data);
                 setMovies(res.data);
@@ -18,10 +22,32 @@ function Movies() {
             })
     }
 
-    useEffect(getMovie, [])
+    function sarchMovies(e) {
+        e.preventDefault()
+        getMovie()
+    }
+    useEffect(() => { getMovie() }, [])
 
     return (
         <>
+            <div className="container">
+                <h2>i nostri film</h2>
+
+                <div>
+                    <form className="row g-3" onSubmit={(e) => sarchMovies(e)} >
+
+                        <div className="col-auto">
+
+                            <input type="text" onChange={(e) => setResarc(e.target.value)} className="form-control" placeholder="ricerca" />
+                        </div>
+                        <div className="col-auto">
+                            <button type="submit" className="btn btn-primary mb-3">ricerca</button>
+                        </div>
+                    </form>
+                </div>
+
+
+            </div>
             <h1 className='mb-3'>Lista Film</h1>
             <section>
                 <div className='row'>
