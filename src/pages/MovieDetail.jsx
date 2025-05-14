@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom"
 import axios from "axios";
 import { useEffect, useState } from "react";
 import StarRating from "../components/StarRating";
+import FormReview from "../components/FormReview";
 
 
 const MovieDetail = () => {
@@ -17,7 +18,7 @@ const MovieDetail = () => {
     }
 
     useEffect(getMovie, [id])
-    console.log(movie)
+    // console.log(movie)
 
     return (
 
@@ -46,6 +47,7 @@ const MovieDetail = () => {
                         </div>
                     </div>)) : <div>Nessuna recensione</div>}
             </div>
+            <FormReview id={id} reload={getMovie} />
 
         </div>
 
