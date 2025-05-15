@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import MovieCard from '../components/MovieCard'
 
 
+
 function Movies() {
     const [movies, setMovies] = useState([])
     const [resarc, setResarc] = useState("")
@@ -44,6 +45,7 @@ function Movies() {
                             <button type="submit" className="btn btn-primary mb-3">ricerca</button>
                         </div>
                     </form>
+
                 </div>
 
 

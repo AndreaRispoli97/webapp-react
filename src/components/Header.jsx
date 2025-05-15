@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom"
+import { Link, NavLink } from "react-router-dom"
 
 const Header = () => {
     return (
@@ -10,6 +10,7 @@ const Header = () => {
                         <NavLink to='/'>Home Page</NavLink>
                     </li>
                     <li><NavLink to='/movies'>Movies</NavLink></li>
+                    <li><Link to='/movie/new' alt='Aggiungi un nuovo film'>Add new film</Link></li>
                 </ul>
             </div>
         </nav>

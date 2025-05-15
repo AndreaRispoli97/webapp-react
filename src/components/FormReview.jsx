@@ -21,7 +21,7 @@ function FormReview({ id, reload }) {
     }
 
     // console.log(id)
-
+    //handleformdata
     function sendReview(e) {
         e.preventDefault();
 
