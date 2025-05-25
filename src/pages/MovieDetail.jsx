@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import StarRating from "../components/StarRating";
 import FormReview from "../components/FormReview";
 
+import { useContext } from 'react'
+import GlobalContext from '../contexts/globalContext'
 
 const MovieDetail = () => {
 
@@ -11,10 +13,14 @@ const MovieDetail = () => {
     const [movie, setMovie] = useState({})
     // console.log(id);
 
+    const { setIsLoading } = useContext(GlobalContext)
+
     function getMovie() {
+        setIsLoading(true);
         axios(`http://127.0.0.1:3000/api/movies/${id}`)
             .then(res => setMovie(res.data))
             .catch(err => console.log(err))
+            .finally(() => setIsLoading(false))
     }
 
     useEffect(getMovie, [id])

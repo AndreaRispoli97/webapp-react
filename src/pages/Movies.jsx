@@ -1,14 +1,20 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import MovieCard from '../components/MovieCard'
-
+import { useContext } from 'react'
+import GlobalContext from '../contexts/globalContext'
 
 
 function Movies() {
     const [movies, setMovies] = useState([])
     const [resarc, setResarc] = useState("")
 
+    const { setIsLoading } = useContext(GlobalContext)
+
     function getMovie() {
+
+        setIsLoading(true);
+
         axios.get('http://127.0.0.1:3000/api/movies',
             {
                 params: { resarc }
@@ -21,6 +27,7 @@ function Movies() {
             .catch(err => {
                 console.error('Errore', err)
             })
+            .finally(() => setIsLoading(false))
     }
 
     function sarchMovies(e) {
