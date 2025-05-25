@@ -3,7 +3,7 @@ import StarRating from "./StarRating";
 
 const MovieCard = ({ data }) => {
 
-    const { id, title, director, genre, release_year, abstract, media_voti, imagePath } = data;
+    const { id, title, director, genre, release_year, abstract, media_voti, imagePath, slug } = data;
     return (
         <div className="card">
 
@@ -18,7 +18,7 @@ const MovieCard = ({ data }) => {
                 <p className="card-text">{abstract}</p>
                 <StarRating media_voti={media_voti} />
                 {/* <p className="card-text"><StarComponent/></p> */}
-                <Link to={`/movie/${id}`} className="btn btn-primary">Dettaglio</Link>
+                <Link to={`/movie/${slug}`} className="btn btn-primary">Dettaglio</Link>
             </div>
         </div>
     )
